@@ -1,0 +1,25 @@
+.breed-img {
+  width: 150px;
+  height: 150px;
+}
+
+.mx-a {
+  display: flex;
+  justify-content: center;
+}
+
+.form-field {
+  margin-left: 20px;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+
+.mt-5 {
+  margin-top: 50px;
+}
+
+.toolbar {
+  background: white;
+}

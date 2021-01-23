@@ -1,0 +1,78 @@
+<mat-toolbar color="primary">
+  {{ title }}
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+  <mat-toolbar class="toolbar">
+    <span class="fill-remaining-space"></span>
+
+    <mat-form-field class="mt-2">
+      <mat-select
+        placeholder="Select a Breed"
+        [(ngModel)]="selectedBreed"
+        id="name"
+        name="name"
+        #name="ngModel"
+        required
+      >
+        <mat-option *ngFor="let breed of breedsList" [value]="breed">{{
+          breed | titlecase
+        }}</mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="
+          name.invalid && (name.dirty || name.touched) && name.errors.required
+        "
+      >
+        Please select a breed
+      </mat-error>
+    </mat-form-field>
+
+    <span class="fill-remaining-space"></span>
+
+    <mat-form-field class="mt-2">
+      <mat-label>Number of images</mat-label>
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="imgNo"
+        oninput="validity.valid||(value='');"
+        min="1"
+        id="number"
+        name="number"
+        #number="ngModel"
+        required
+      />
+      <mat-error
+        *ngIf="
+          number.invalid &&
+          (number.dirty || number.touched) &&
+          number.errors.required
+        "
+      >
+        This field is required
+      </mat-error>
+    </mat-form-field>
+
+    <span class="fill-remaining-space"></span>
+  </mat-toolbar>
+
+  <div class="mx-a mt-5">
+    <button mat-raised-button class="" color="primary" (click)="getImages()">
+      GET IMAGES
+    </button>
+  </div>
+
+  <h2 class="mt-5" *ngIf="randomImgs.length > 0">
+    Showing "{{ randomImgs.length }}" images of {{ selectedBreed | titlecase }}
+  </h2>
+  <mat-grid-list *ngIf="randomImgs.length > 0" cols="4" rowHeight="200px">
+    <mat-grid-tile *ngFor="let img of randomImgs" colspan="1" rowspan="1">
+      <mat-card>
+        <img mat-card-image [src]="img" class="breed-img" />
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="close()">Close</button>
+</mat-dialog-actions>

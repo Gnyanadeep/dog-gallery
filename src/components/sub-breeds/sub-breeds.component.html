@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  {{ breed | titlecase }}
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+  <h2>Sub Breeds</h2>
+  <mat-grid-list
+    cols="3"
+    rowHeight="250px"
+    *ngIf="subBreedsList.length > 0; else noBreeds"
+  >
+    <mat-grid-tile
+      *ngFor="let sb of subBreedsList"
+      colspan="1"
+      rowspan="1"
+      class="mt"
+    >
+      <mat-card class="txt-c">
+        <img mat-card-image [src]="sb.imgPath" class="breed-img" />
+        <mat-card-title>{{ sb.name | titlecase }}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <ng-template #noBreeds> No sub-breeds available for this breed </ng-template>
+
+  <h2>More Images</h2>
+  <mat-grid-list cols="3" rowHeight="200px">
+    <mat-grid-tile
+      *ngFor="let img of randomImgs"
+      colspan="1"
+      rowspan="1"
+      class="mtl"
+    >
+      <mat-card>
+        <img mat-card-image [src]="img" class="breed-img" />
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="close()">Close</button>
+</mat-dialog-actions>

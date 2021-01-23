@@ -1,0 +1,25 @@
+.mat-elevation-z8 {
+  /* position: fixed; */
+  z-index: 9;
+}
+
+.form-field {
+  width: 500px;
+}
+
+.mt {
+  margin-top: 20px;
+}
+
+.breed-img {
+  width: 150px;
+  height: 150px;
+}
+
+.txt-c {
+  text-align: center;
+}
+
+mat-card:hover {
+  cursor: pointer;
+}
